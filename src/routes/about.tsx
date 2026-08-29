@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
 const EXTERNAL_URL =
   "https://www.znanylekarz.pl/katarzyna-sanocka-szulc/psycholog-psychoterapeuta/tczew";
@@ -11,13 +11,13 @@ export const Route = createFileRoute("/about")({
       { name: "robots", content: "noindex" },
     ],
   }),
+  beforeLoad: () => {
+    throw redirect({ href: EXTERNAL_URL });
+  },
   component: AboutRedirect,
 });
 
 function AboutRedirect() {
-  if (typeof window !== "undefined") {
-    window.location.replace(EXTERNAL_URL);
-  }
   return (
     <div className="min-h-screen grid place-items-center bg-background px-6 text-center">
       <p className="text-muted-foreground">

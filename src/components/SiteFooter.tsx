@@ -11,21 +11,24 @@ export function SiteFooter() {
         <div className="text-sm">
           <h4 className="font-display text-xl mb-3">Kontakt</h4>
           <p className="text-muted-foreground leading-relaxed">
-            sanocka.szulc@gmail.com
+            <a href="mailto:sanocka.szulc@gmail.com" className="hover:text-foreground transition">
+              sanocka.szulc@gmail.com
+            </a>
           </p>
         </div>
         <div className="text-sm">
           <h4 className="font-display text-xl mb-3">Formy pracy</h4>
           <p className="text-muted-foreground leading-relaxed">
-            online na WhatsApp<br />
+            online na WhatsApp
+            <br />
             stacjonarnie w gabinecie
           </p>
         </div>
-
       </div>
 
       <div className="border-t border-border/60 py-6 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} dr Katarzyna Sanocka-Szulc Psychoterapia. Gabinet psychoterapeutyczny.
+        © {new Date().getFullYear()} dr Katarzyna Sanocka-Szulc Psychoterapia. Gabinet
+        psychoterapeutyczny.
       </div>
     </footer>
   );

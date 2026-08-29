@@ -1,19 +1,23 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Youtube, BookOpen, Music, HeartHandshake } from "lucide-react";
+import { BookOpen, Music, HeartHandshake } from "lucide-react";
 import heroImg from "@/assets/hero-therapy.jpg";
 import orchidImg from "@/assets/orchid.jpg";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 
-
-
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "dr Katarzyna Sanocka-Szulc Psychoterapia — Uważna pomoc psychologiczna online" },
-      { name: "description", content: "Psychoterapia indywidualna, par i rodzinna online. Ciepła, oparta na badaniach praktyka — wsparcie w lęku, relacjach i życiowych zmianach." },
+      {
+        name: "description",
+        content:
+          "Psychoterapia indywidualna, par i rodzinna online. Ciepła, oparta na badaniach praktyka — wsparcie w lęku, relacjach i życiowych zmianach.",
+      },
       { property: "og:title", content: "dr Katarzyna Sanocka-Szulc Psychoterapia" },
       { property: "og:description", content: "Spokojna przestrzeń na rozmowę i zmianę na lepsze." },
+      { property: "og:image", content: "/og.jpg" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Home,
@@ -30,7 +34,6 @@ const socialLinks = [
     label: "Spotify",
     href: "https://open.spotify.com/show/2ZunVOMkhByS6jrzHR9XUy?si=C7c7QNNJR8GRhRyltzhK6Q&utm_source=whatsapp",
   },
-  { Icon: Youtube, label: "YouTube", href: "#" },
   { Icon: HeartHandshake, label: "Fundacja KzB", href: "https://kobietazbrzuszkiem.pl/" },
 ];
 
@@ -56,9 +59,18 @@ const services = [
 ];
 
 const faqs: [string, string][] = [
-  ["Jak wygląda pierwsza sesja?", "To głównie Twoja historia, Twoimi słowami. Zadam kilka pytań porządkujących i porozmawiamy o tym, co Cię przyprowadza i co chciał(a)byś zmienić."],
-  ["Jak długo trwa terapia?", "Pierwsze efekty psychoterapii są widoczne po około pół roku do roku, średnio procesy trwają 2-3 lata. Sesje coachingowe skupiające się na konkretnym problemie trwają kilka spotkań."],
-  ["Czy oferujesz sesje online?", "Tak — spotykamy się na WhatsApp. Około połowa mojej praktyki odbywa się zdalnie."],
+  [
+    "Jak wygląda pierwsza sesja?",
+    "To głównie Twoja historia, Twoimi słowami. Zadam kilka pytań porządkujących i porozmawiamy o tym, co Cię przyprowadza i co chciał(a)byś zmienić.",
+  ],
+  [
+    "Jak długo trwa terapia?",
+    "Pierwsze efekty psychoterapii są widoczne po około pół roku do roku, średnio procesy trwają 2-3 lata. Sesje coachingowe skupiające się na konkretnym problemie trwają kilka spotkań.",
+  ],
+  [
+    "Czy oferujesz sesje online?",
+    "Tak — spotykamy się na WhatsApp. Około połowa mojej praktyki odbywa się zdalnie.",
+  ],
 ];
 
 function Home() {
@@ -68,14 +80,14 @@ function Home() {
 
       {/* Split hero */}
       <section id="start" className="relative min-h-screen grid lg:grid-cols-2">
-        <div className="bg-gradient-hero flex items-center pt-28 lg:pt-0 px-6 lg:px-16 xl:px-24 py-16">
+        <div className="bg-gradient-hero flex items-center pt-36 lg:pt-32 px-6 lg:px-16 xl:px-24 pb-16">
           <div className="max-w-xl">
-            
-            <h1 className="mt-6 font-display text-5xl md:text-6xl lg:text-7xl leading-[1.05] text-balance">
+            <h1 className="mt-20 font-display text-5xl md:text-6xl lg:text-7xl leading-[1.05] text-balance">
               Łagodność jest formą <em className="text-primary not-italic font-light">siły</em>.
             </h1>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-md">
-              Praktyka psychoterapeutyczna łącząca wiedzę naukową z holistycznym podejściem do dbania o dobrostan psycho-fizyczny.
+              Praktyka psychoterapeutyczna łącząca wiedzę naukową z holistycznym podejściem do
+              dbania o dobrostan psycho-fizyczny.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <a
@@ -120,7 +132,9 @@ function Home() {
               <a
                 key={label}
                 href={href}
-                {...(href !== "#" ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                {...(href.startsWith("http")
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
                 aria-label={label}
                 title={label}
                 className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-background/70 backdrop-blur px-3.5 py-2 text-xs text-primary hover:bg-background/90 hover:border-primary transition"
@@ -137,23 +151,37 @@ function Home() {
       <section id="podejscie" className="py-28 px-6 lg:px-16 xl:px-24">
         <div className="mx-auto max-w-6xl grid lg:grid-cols-12 gap-12">
           <div className="lg:col-span-5">
-            <span className="text-xs uppercase tracking-[0.25em] text-primary/80">Moje podejście</span>
+            <span className="text-xs uppercase tracking-[0.25em] text-primary/80">
+              Moje podejście
+            </span>
             <h2 className="mt-4 font-display text-4xl md:text-5xl leading-tight text-balance">
               Terapia, która spotyka Cię tam, gdzie naprawdę jesteś.
             </h2>
           </div>
           <div className="lg:col-span-7 lg:pt-10">
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Nowoczesna praktyka psychoterapeutyczna oparta na podejściu systemowym
-              i poznawczo-behawioralnym oraz pracy z ciałem. Terapia oparta na aktualnej
-              wiedzy naukowej, w tym neurobiologicznej. Procesy prowadzone pod stałą superwizją.
+              Nowoczesna praktyka psychoterapeutyczna oparta na podejściu systemowym i
+              poznawczo-behawioralnym oraz pracy z ciałem. Terapia oparta na aktualnej wiedzy
+              naukowej, w tym neurobiologicznej. Procesy prowadzone pod stałą superwizją.
             </p>
             <div className="mt-10 grid sm:grid-cols-2 gap-8">
               {[
-                { t: "Systemowe", d: "Patrzę na Ciebie w kontekście relacji, rodziny i środowiska — bo nie istniejemy w próżni." },
-                { t: "Poznawczo-behawioralne", d: "Pracujemy nad myślami i funkcjonalnymi nawykami, które wspierają dobrostan psychofizyczny." },
-                { t: "Praca z ciałem", d: "Słuchamy mądrości ciała — oddechu, doznań, prawd, do których słowa nie sięgają." },
-                { t: "We własnym tempie", d: "Głębia bez presji. Ty wyznaczasz tempo, ja dbam o stałość." },
+                {
+                  t: "Systemowe",
+                  d: "Patrzę na Ciebie w kontekście relacji, rodziny i środowiska — bo nie istniejemy w próżni.",
+                },
+                {
+                  t: "Poznawczo-behawioralne",
+                  d: "Pracujemy nad myślami i funkcjonalnymi nawykami, które wspierają dobrostan psychofizyczny.",
+                },
+                {
+                  t: "Praca z ciałem",
+                  d: "Słuchamy mądrości ciała — oddechu, doznań, prawd, do których słowa nie sięgają.",
+                },
+                {
+                  t: "We własnym tempie",
+                  d: "Głębia bez presji. Ty wyznaczasz tempo, ja dbam o stałość.",
+                },
               ].map((i) => (
                 <div key={i.t} className="border-t border-border pt-5">
                   <div className="font-display text-2xl">{i.t}</div>
@@ -179,9 +207,12 @@ function Home() {
             />
           </div>
           <blockquote className="md:col-span-2 font-display text-3xl md:text-4xl leading-snug text-balance">
-            <span className="text-primary text-5xl leading-none">„</span>Między bodźcem a reakcją istnieje przestrzeń.
-            W tej przestrzeni leży nasza moc wyboru reakcji, a w naszej reakcji — nasz rozwój.
-            <footer className="mt-6 text-sm tracking-widest uppercase text-muted-foreground font-body">— Viktor E. Frankl</footer>
+            <span className="text-primary text-5xl leading-none">„</span>Między bodźcem a reakcją
+            istnieje przestrzeń. W tej przestrzeni leży nasza moc wyboru reakcji, a w naszej reakcji
+            — nasz rozwój.
+            <footer className="mt-6 text-sm tracking-widest uppercase text-muted-foreground font-body">
+              — Viktor E. Frankl
+            </footer>
           </blockquote>
         </div>
       </section>
@@ -191,7 +222,9 @@ function Home() {
         <div className="mx-auto max-w-6xl">
           <div className="flex items-end justify-between flex-wrap gap-6 mb-14">
             <div>
-              <span className="text-xs uppercase tracking-[0.25em] text-primary/80">Z czym najczęściej przychodzą klienci</span>
+              <span className="text-xs uppercase tracking-[0.25em] text-primary/80">
+                Z czym najczęściej przychodzą klienci
+              </span>
               <h2 className="mt-3 font-display text-4xl md:text-5xl text-balance max-w-2xl">
                 Nie trzeba kryzysu, żeby zacząć.
               </h2>
@@ -199,8 +232,14 @@ function Home() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border rounded-xl overflow-hidden">
             {[
-              ["Lęk i przeciążenie", "Wyciszamy wewnętrzne alarmy, żebyś znów mógł myśleć, oddychać i decydować."],
-              ["Depresja i brak motywacji", "Odzyskiwanie sił, gdy wszystko wydaje się ciężkie lub puste."],
+              [
+                "Lęk i przeciążenie",
+                "Wyciszamy wewnętrzne alarmy, żebyś znów mógł myśleć, oddychać i decydować.",
+              ],
+              [
+                "Depresja i brak motywacji",
+                "Odzyskiwanie sił, gdy wszystko wydaje się ciężkie lub puste.",
+              ],
               ["Relacje", "Schematy, przywiązanie, komunikacja — to, co boli między ludźmi."],
               ["Wsparcie w rodzicielstwie", "Byś mogła poczuć się wystarczajaco dobrym rodzicem."],
               ["Tożsamość i sens", "Wielkie pytania, zwroty w połowie życia, praca nad sobą."],
@@ -227,7 +266,6 @@ function Home() {
             </div>
           </div>
 
-
           <div className="grid md:grid-cols-3 gap-px bg-border rounded-2xl overflow-hidden shadow-soft">
             {services.map((s) => (
               <div key={s.name} className="bg-card p-10 flex flex-col">
@@ -244,11 +282,8 @@ function Home() {
               </div>
             ))}
           </div>
-
-
         </div>
       </section>
-
 
       {/* FAQ */}
       <section id="faq" className="py-24 px-6 lg:px-16 bg-secondary/30">
@@ -271,11 +306,11 @@ function Home() {
       {/* Contact */}
       <section id="kontakt" className="py-28 px-6">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="font-display text-5xl md:text-6xl text-balance leading-tight">
-            KONTAKT
-          </h2>
+          <h2 className="font-display text-5xl md:text-6xl text-balance leading-tight">KONTAKT</h2>
           <p className="mt-6 text-lg text-muted-foreground">
-            sanocka.szulc@gmail.com
+            <a href="mailto:sanocka.szulc@gmail.com" className="hover:text-foreground transition">
+              sanocka.szulc@gmail.com
+            </a>
           </p>
           <p className="mt-4 text-lg text-muted-foreground">
             przyjmuję przez CPP Więź w Starogardzie Gdańskim (w gabinecie i online)
@@ -291,7 +326,6 @@ function Home() {
               CPP Więź →
             </a>
           </p>
-
         </div>
       </section>
 
