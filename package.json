@@ -88,5 +88,8 @@
   "overrides": {
     "seroval": "^1.5.6",
     "seroval-plugins": "^1.5.6"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild", "workerd"]
   }
 }
