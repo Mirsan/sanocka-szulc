@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { BookOpen, Music, HeartHandshake } from "lucide-react";
+import { BookOpen, Music, Play, HeartHandshake } from "lucide-react";
 import heroImg from "@/assets/hero-therapy.jpg";
 import orchidImg from "@/assets/orchid.jpg";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -34,6 +34,7 @@ const socialLinks = [
     label: "Spotify",
     href: "https://open.spotify.com/show/2ZunVOMkhByS6jrzHR9XUy?si=C7c7QNNJR8GRhRyltzhK6Q&utm_source=whatsapp",
   },
+  { Icon: Play, label: "YouTube", href: "#" },
   { Icon: HeartHandshake, label: "Fundacja KzB", href: "https://kobietazbrzuszkiem.pl/" },
 ];
 
